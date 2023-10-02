@@ -20,4 +20,14 @@ final class AuthenticationRepository{
     func createnewUser(email: String, password: String, completionBlock: @escaping(Result<User, Error>)-> Void) {
         authenticationFireBaseDataSource.createNewUser(email: email, password: password, completionBlock: completionBlock)
     }
+    func login(email: String, password: String, completionBlock: @escaping(Result<User, Error>)-> Void) {
+        authenticationFireBaseDataSource.login(email: email, password: password, completionBlock: completionBlock)
+    }
+    func loginWithFacebook( completionBlock: @escaping(Result<User, Error>)-> Void) {
+        authenticationFireBaseDataSource.loginWithFacebook(completionBlock: completionBlock)
+    }
+    
+    func logOut() throws{
+      try  authenticationFireBaseDataSource.logOut()
+    }
 }

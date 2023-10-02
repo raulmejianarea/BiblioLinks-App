@@ -24,7 +24,7 @@ struct AuthenticationView: View {
     
     var body: some View {
         VStack {
-            Image("Gains")
+            Image("Bibliolinks")
                 .resizable()
                 .frame(width: 200, height: 200)
             VStack{
@@ -35,6 +35,18 @@ struct AuthenticationView: View {
                     Label("Entra con email",systemImage: "envelope.fill")
                 }
                 .tint(.black)
+                Button{
+                    print("Login with Facebook")
+                    authenticationViewModel.loginWithFacebook()
+                }label: {
+                    Image("facebook")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                    Text("Entra con Facebook")
+                        
+                }
+                .tint(.blue)
+                
             }
             .controlSize(.large)
             .buttonStyle(.bordered)
@@ -58,7 +70,7 @@ struct AuthenticationView: View {
             case .register:
                 RegisterEmailView(authenticationViewModel: authenticationViewModel)
             case .login:
-                LoginEmailView()
+                LoginEmailView(authenticationViewModel: authenticationViewModel)
             }
         }
     
